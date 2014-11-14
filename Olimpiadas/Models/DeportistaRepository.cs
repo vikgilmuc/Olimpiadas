@@ -2,12 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data;
 
 namespace Olimpiadas.Models
 {
     public class DeportistaRepository : IDeportistaRepository
     {
+        public ICollection<Deportista> GetDeportistas(int PaisISO) {
 
+            return ;
+        
+        }
 
 
 
