@@ -6,7 +6,7 @@ using System.Data;
 
 namespace Olimpiadas.Models
 {
-    public class DeportistaRepository : IDeportistaRepository
+    public class DeportistaRepository2 : IDeportistaRepository
     {
         public ICollection<Deportista> GetDeportistas(int PaisISO) {
 
@@ -14,6 +14,7 @@ namespace Olimpiadas.Models
         
         }
 
+      
 
 
     }
