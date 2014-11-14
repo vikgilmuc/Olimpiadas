@@ -21,12 +21,12 @@ namespace Olimpiadas.Models
         [Required]
         public int dorsal { get; set; }
         [Required]
-        public string idPrueba { get; set; }
+        public int idPrueba { get; set; }
         [DataType(DataType.DateTime)]
-        [DisplayFormat (DataFormatString={0:dd/MM/yy})]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yy}", ApplyFormatInEditMode = true)]
         public string fecha { get; set; }
         [Range (1,3)]
-        public long posicion { get; set; }
+        public int posicion { get; set; }
     
         public virtual Deportista Deportista { get; set; }
         public virtual Prueba Prueba { get; set; }

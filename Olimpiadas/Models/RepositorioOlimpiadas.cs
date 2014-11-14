@@ -7,7 +7,7 @@ namespace Olimpiadas.Models
 {
     public class RepositorioOlimpiadas:IOlimpiadas
     {
-        OlimpiadasContext db = new OlimpiadasContext();
+        OlimpiadasContainer db = new OlimpiadasContainer();
         //esto es el contexto 
         Deportista IOlimpiadas.dameDeportistaNuevo()
         {
@@ -68,24 +68,37 @@ namespace Olimpiadas.Models
             return resultado.ToList();
         }
 
-        List<Deportista> IOlimpiadas.dameMedallas(string tipo)
+       List<Deportista> IOlimpiadas.dameMedallas(string tipo)
+
         {
-            var resultado = from c in db.Deportistas
+         int pos = -1;
+         if (tipo.ToUpper().Equals("ORO"))
+            {
+            pos = 1;
+            }
+             if (tipo.ToUpper().Equals("PLATA"))
+            {
+            pos = 2;
+            }
+             if (tipo.ToUpper().Equals("BRONCE"))
+            {
+            pos =3;
+            }
 
-                            join p in db.Calificaciones on c.dorsal equals p.dorsal // Equivale al INNER JOIN TABLA2 ON TABLA1.ID_PK = TABLA2.ID_FK
-                            where p.posicion.Equals(tipo)
-                            select c;
-            return resultado.ToList();
-
-
-            
+             var resultado = from c in db.Deportistas // Lista de clientes
+             join p in db.Calificaciones on c.dorsal equals p.dorsal // Equivale al INNER JOIN TABLA2 ON TABLA1.ID_PK = TABLA2.ID_FK
+             where p.posicion==pos
+             select c;
+         return resultado.ToList();
         }
+
+
 
         Deportista IOlimpiadas.dameDeportistaClonado(int dorsalviejo)
         {
             Deportista miDeportistaNuevo = null;
 
-           private  Deportista miDeportista = db.Deportistas.Find(dorsalviejo);
+           Deportista miDeportista = db.Deportistas.Find(dorsalviejo);
 
             if (miDeportista != null)
             {
@@ -116,13 +129,13 @@ namespace Olimpiadas.Models
             foreach (Deportista miDeportista in listaDeportistas)
             {
 
-                DeportistaConPruebas miDeportista = new DeportistaConPruebas();
+                DeportistaConPruebas miAtleta = new DeportistaConPruebas();
 
-                miDeportista.deportista = miDeportista;
+                miAtleta.deportista = miDeportista;
 
-                miDeportista.PruebasPosiciones = damePosicionesDeDeportista(miDeportista.dorsal);
+                miAtleta.PruebasPosiciones = damePosicionesDeDeportista(miDeportista.dorsal);
 
-                miAux.Add(miDeportista);
+                miAux.Add(miAtleta);
 
             }
 
@@ -150,19 +163,19 @@ namespace Olimpiadas.Models
 
              foreach(Calificaciones calificacion in resultado)
 
-            {
+                {
 
-             Prueba miPrueba = db.Pruebas.Find(calificacion.idPrueba);
+                 Prueba miPrueba = db.Pruebas.Find(calificacion.idPrueba);
 
-             PruebaPosicion miPruebaPosicion = new PruebaPosicion();
+                 PruebaPosicion miPruebaPosicion = new PruebaPosicion();
 
-            miPruebaPosicion.nombrePrueba = miPrueba.nombre;
+                miPruebaPosicion.nombrePrueba = miPrueba.nombre;
 
-            miPruebaPosicion.posicion = calificacion.posicion;
+                miPruebaPosicion.posicion = calificacion.posicion;
 
-            Aux.Add(miPruebaPosicion);
+                Aux.Add(miPruebaPosicion);
 
-            }
+              }
 
              return Aux;
 

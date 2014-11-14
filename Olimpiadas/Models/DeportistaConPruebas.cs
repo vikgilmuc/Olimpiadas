@@ -16,7 +16,7 @@ namespace Olimpiadas.Models
     public class DeportistaConPruebas
     {
         public Deportista deportista;
-        private List<PruebaPosicion> PruebasPosiciones {set;get;}
+        public List<PruebaPosicion> PruebasPosiciones {set;get;}
 
 
     }

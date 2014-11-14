@@ -134,19 +134,8 @@
     <Compile Include="Models\Deportista.cs">
       <DependentUpon>Olimpiadas.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DeportistaRepository2.cs" />
     <Compile Include="Models\IDeportistaRepository.cs" />
     <Compile Include="Models\IOlimpiadas.cs" />
-    <Compile Include="Models\Model1.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Olimpiadas.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -162,7 +151,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Olimpiadas.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\OlimpiadasContext.cs" />
     <Compile Include="Models\Pais.cs">
       <DependentUpon>Olimpiadas.tt</DependentUpon>
     </Compile>
@@ -219,18 +207,6 @@
     <Content Include="Models\Olimpiadas.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Olimpiadas.cs</LastGenOutput>
-      <DependentUpon>Olimpiadas.edmx</DependentUpon>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Models\Model1.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
-      <DependentUpon>Olimpiadas.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\Model1.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model1.cs</LastGenOutput>
       <DependentUpon>Olimpiadas.edmx</DependentUpon>
     </Content>
   </ItemGroup>

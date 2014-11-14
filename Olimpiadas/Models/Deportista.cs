@@ -12,11 +12,13 @@ namespace Olimpiadas.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    
+    using System.Linq;
+    using System.Web;
+
     public partial class Deportista
-    {
+{
         public Deportista()
-        {
+    {
             this.Calificaciones = new HashSet<Calificaciones>();
         }
         [Required]
@@ -35,7 +37,7 @@ namespace Olimpiadas.Models
         public System.DateTime fechaNacimiento { get; set; }
         [StringLength(3)]
         public string ISO { get; set; }
-    
+
         public virtual Pais Pais { get; set; }
         public virtual ICollection<Calificaciones> Calificaciones { get; set; }
     }

@@ -21,7 +21,7 @@ namespace Olimpiadas.Models
         }
         [Required]
         [Key]
-        []
+       
         public int Id { get; set; }
         public string nombre { get; set; }
     

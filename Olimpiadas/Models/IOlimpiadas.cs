@@ -9,19 +9,19 @@ namespace Olimpiadas.Models
     public interface IOlimpiadas
     {
 
-        public Deportista dameDeportistaNuevo();
-        public Deportista dameDeportistaDorsal(int num);
-        public List<Deportista> dameDeportistas();
-        public List<Deportista> dameDeportistasDeUnPais(String ISO);
-        public List<Deportista> dameDeportistasMasJovenes (int num=0);
-        public Pais creaPaisNuevo();
-        public Pais damePais(String ISO);
-        public List<Deportista> dameDeporsitasDeUnPaisMenoresDeUnaEdad(String ISO, int edad= 1000);
-        public List<Deportista> dameMedallas(String tipo);
+         Deportista dameDeportistaNuevo();
+         Deportista dameDeportistaDorsal(int num);
+         List<Deportista> dameDeportistas();
+         List<Deportista> dameDeportistasDeUnPais(String ISO);
+         List<Deportista> dameDeportistasMasJovenes (int num=0);
+         Pais creaPaisNuevo();
+         Pais damePais(String ISO);
+         List<Deportista> dameDeporsitasDeUnPaisMenoresDeUnaEdad(String ISO, int edad= 1000);
+         List<Deportista> dameMedallas(String tipo);
 
-        public Deportista dameDeportistaClonado(int dorsalviejo);
+         Deportista dameDeportistaClonado(int dorsalviejo);
 
-        public List<DeportistaConPruebas> dameDeportistasConCalificacionesDeUnPais(string ISO);
+         List<DeportistaConPruebas> dameDeportistasConCalificacionesDeUnPais(string ISO);
 
     }
 }
