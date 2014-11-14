@@ -10,5 +10,9 @@ namespace Olimpiadas.Models
         public DbSet<Deportista> Deportistas { set; get; }
         public DbSet<Pais> Paises { set; get; }
 
+        public DbSet<Prueba> Pruebas {set; get; };
+
+        public DbSet<Calificaciones> Calificaciones {set; get;};
+
     }
 }

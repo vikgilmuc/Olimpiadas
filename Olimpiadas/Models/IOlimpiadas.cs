@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Olimpiadas.Models
 {
-    interface IOlimpiadas
+    public interface IOlimpiadas
     {
 
         public Deportista dameDeportistaNuevo();
