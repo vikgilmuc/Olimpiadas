@@ -6,6 +6,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Data.Entity;
+using Olimpiadas.Models;
 
 namespace Olimpiadas
 {
@@ -16,10 +17,11 @@ namespace Olimpiadas
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-           // Database.SetInitializer<OlimpiadasDB>(new OlimpiadasInitializer());
+           
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            Database.SetInitializer<OlimpiadasContainer>(new OlimpiadasInitializer());
         }
     }
 }

@@ -27,7 +27,7 @@
     <Key>
       <PropertyRef Name="ISO" />
     </Key>
-    <Property Name="ISO" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ISO" Type="nchar" Nullable="false" MaxLength="3" />
     <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Deportistas">
@@ -37,12 +37,11 @@
     <Property Name="dorsal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
     <Property Name="edad" Type="int" Nullable="false" />
-    <Property Name="calificacion" Type="decimal" Nullable="false" />
+    <Property Name="calificacion" Type="int" Nullable="false" />
     <Property Name="email" Type="nvarchar(max)" Nullable="false" />
     <Property Name="descripcion" Type="nvarchar" Nullable="false" MaxLength="250" />
     <Property Name="fechaNacimiento" Type="datetime" Nullable="false" />
-    <Property Name="ISO" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Pais_ISO" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ISO" Type="nchar" Nullable="false" MaxLength="3" />
   </EntityType>
   <EntityType Name="Pruebas">
     <Key>
@@ -57,9 +56,9 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="dorsal" Type="int" Nullable="false" />
-    <Property Name="idePrueba" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="idPrueba" Type="int" Nullable="false" />
     <Property Name="fecha" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="posicion" Type="bigint" Nullable="false" />
+    <Property Name="posicion" Type="int" Nullable="false" />
     <Property Name="Deportista_dorsal" Type="int" Nullable="false" />
     <Property Name="Prueba_Id" Type="int" Nullable="false" />
   </EntityType>
@@ -71,7 +70,7 @@
         <PropertyRef Name="ISO" />
       </Principal>
       <Dependent Role="Deportista">
-        <PropertyRef Name="Pais_ISO" />
+        <PropertyRef Name="ISO" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -125,7 +124,7 @@
           <Key>
             <PropertyRef Name="ISO" />
           </Key>
-          <Property Name="ISO" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="ISO" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="3" FixedLength="true" />
           <Property Name="nombre" Type="String" Nullable="false" cg:SetterAccess="Public" />
           <NavigationProperty Name="Deportistas" Relationship="Olimpiadas.PaisDeportista" FromRole="Pais" ToRole="Deportista" />
         </EntityType>
@@ -136,17 +135,25 @@
           <Property Name="dorsal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" Nullable="false" />
           <Property Name="edad" Type="Int32" Nullable="false" />
-          <Property Name="calificacion" Type="Decimal" Nullable="false" />
+          <Property Name="calificacion" Type="Int32" Nullable="false" />
           <Property Name="email" Type="String" Nullable="false" />
           <Property Name="descripcion" Type="String" Nullable="false" MaxLength="250" />
           <Property Name="fechaNacimiento" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="Pais" Relationship="Olimpiadas.PaisDeportista" FromRole="Deportista" ToRole="Pais" />
-          <Property Name="ISO" Type="String" Nullable="false" />
+          <Property Name="ISO" Type="String" Nullable="false" FixedLength="true" MaxLength="3" />
           <NavigationProperty Name="Calificaciones" Relationship="Olimpiadas.DeportistaCalificaciones" FromRole="Deportista" ToRole="Calificaciones" />
         </EntityType>
         <Association Name="PaisDeportista">
           <End Type="Olimpiadas.Pais" Role="Pais" Multiplicity="1" />
           <End Type="Olimpiadas.Deportista" Role="Deportista" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="ISO" />
+            </Principal>
+            <Dependent Role="Deportista">
+              <PropertyRef Name="ISO" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         <EntityType Name="Prueba">
           <Key>
@@ -162,9 +169,9 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="dorsal" Type="Int32" Nullable="false" />
-          <Property Name="idPrueba" Type="String" Nullable="false" />
+          <Property Name="idPrueba" Type="Int32" Nullable="false" />
           <Property Name="fecha" Type="String" Nullable="false" />
-          <Property Name="posicion" Type="Int64" Nullable="false" />
+          <Property Name="posicion" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Deportista" Relationship="Olimpiadas.DeportistaCalificaciones" FromRole="Calificaciones" ToRole="Deportista" />
           <NavigationProperty Name="Prueba" Relationship="Olimpiadas.PruebaCalificaciones" FromRole="Calificaciones" ToRole="Prueba" />
         </EntityType>
@@ -217,20 +224,12 @@
         <MappingFragment StoreEntitySet="Calificaciones">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="dorsal" ColumnName="dorsal" />
-          <ScalarProperty Name="idPrueba" ColumnName="idePrueba" />
+          <ScalarProperty Name="idPrueba" ColumnName="idPrueba" />
           <ScalarProperty Name="fecha" ColumnName="fecha" />
           <ScalarProperty Name="posicion" ColumnName="posicion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="PaisDeportista" TypeName="Olimpiadas.PaisDeportista" StoreEntitySet="Deportistas">
-      <EndProperty Name="Pais">
-        <ScalarProperty Name="ISO" ColumnName="Pais_ISO" />
-      </EndProperty>
-      <EndProperty Name="Deportista">
-        <ScalarProperty Name="dorsal" ColumnName="dorsal" />
-      </EndProperty>
-    </AssociationSetMapping>
     <AssociationSetMapping Name="DeportistaCalificaciones" TypeName="Olimpiadas.DeportistaCalificaciones" StoreEntitySet="Calificaciones">
       <EndProperty Name="Deportista">
         <ScalarProperty Name="dorsal" ColumnName="Deportista_dorsal" />

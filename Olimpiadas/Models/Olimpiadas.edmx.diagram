@@ -8,7 +8,7 @@
         <EntityTypeShape EntityType="Olimpiadas.Pais" Width="1.5" PointX="0.5" PointY="0.625" IsExpanded="true" />
         <EntityTypeShape EntityType="Olimpiadas.Deportista" Width="1.5" PointX="2.5" PointY="0.5" />
         <AssociationConnector Association="Olimpiadas.PaisDeportista" />
-        <EntityTypeShape EntityType="Olimpiadas.Prueba" Width="1.5" PointX="5" PointY="4.25" />
+        <EntityTypeShape EntityType="Olimpiadas.Prueba" Width="1.5" PointX="6.25" PointY="3.625" />
         <EntityTypeShape EntityType="Olimpiadas.Calificaciones" Width="1.5" PointX="5.125" PointY="0.625" />
         <AssociationConnector Association="Olimpiadas.DeportistaCalificaciones" />
         <AssociationConnector Association="Olimpiadas.PruebaCalificaciones" />

@@ -124,16 +124,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\DeportistaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Calificaciones.cs">
       <DependentUpon>Olimpiadas.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DeportistaConPruebas.cs" />
     <Compile Include="Models\Deportista.cs">
       <DependentUpon>Olimpiadas.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DeportistaConPruebas.cs" />
     <Compile Include="Models\IDeportistaRepository.cs" />
     <Compile Include="Models\IOlimpiadas.cs" />
     <Compile Include="Models\Olimpiadas.Context.cs">
@@ -151,6 +152,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Olimpiadas.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\OlimpiadasInitializer.cs" />
     <Compile Include="Models\Pais.cs">
       <DependentUpon>Olimpiadas.tt</DependentUpon>
     </Compile>
@@ -177,7 +179,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -209,6 +210,21 @@
       <LastGenOutput>Olimpiadas.cs</LastGenOutput>
       <DependentUpon>Olimpiadas.edmx</DependentUpon>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Deportista\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Deportista\Details.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Deportista\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Deportista\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Deportista\Delete.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

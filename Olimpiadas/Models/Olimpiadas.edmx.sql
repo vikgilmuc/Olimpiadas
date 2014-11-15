@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/14/2014 07:47:03
--- Generated from EDMX file: D:\Labfiles\Mod03\Olimpiadas\Olimpiadas\Models\Olimpiadas.edmx
+-- Date Created: 11/15/2014 22:56:12
+-- Generated from EDMX file: C:\Users\vgil\Source\Repos\Olimpiadas\Olimpiadas\Models\Olimpiadas.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -17,11 +17,32 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_PaisDeportista]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Deportistas] DROP CONSTRAINT [FK_PaisDeportista];
+GO
+IF OBJECT_ID(N'[dbo].[FK_DeportistaCalificaciones]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Calificaciones] DROP CONSTRAINT [FK_DeportistaCalificaciones];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PruebaCalificaciones]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Calificaciones] DROP CONSTRAINT [FK_PruebaCalificaciones];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[Pais]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Pais];
+GO
+IF OBJECT_ID(N'[dbo].[Deportistas]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Deportistas];
+GO
+IF OBJECT_ID(N'[dbo].[Pruebas]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Pruebas];
+GO
+IF OBJECT_ID(N'[dbo].[Calificaciones]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Calificaciones];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -29,7 +50,7 @@ GO
 
 -- Creating table 'Pais'
 CREATE TABLE [dbo].[Pais] (
-    [ISO] nvarchar(max)  NOT NULL,
+    [ISO] nchar(3)  NOT NULL,
     [nombre] nvarchar(max)  NOT NULL
 );
 GO
@@ -39,12 +60,11 @@ CREATE TABLE [dbo].[Deportistas] (
     [dorsal] int IDENTITY(1,1) NOT NULL,
     [nombre] nvarchar(max)  NOT NULL,
     [edad] int  NOT NULL,
-    [calificacion] decimal(18,0)  NOT NULL,
+    [calificacion] int  NOT NULL,
     [email] nvarchar(max)  NOT NULL,
     [descripcion] nvarchar(250)  NOT NULL,
     [fechaNacimiento] datetime  NOT NULL,
-    [ISO] nvarchar(max)  NOT NULL,
-    [Pais_ISO] nvarchar(max)  NOT NULL
+    [ISO] nchar(3)  NOT NULL
 );
 GO
 
@@ -59,9 +79,9 @@ GO
 CREATE TABLE [dbo].[Calificaciones] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [dorsal] int  NOT NULL,
-    [idePrueba] nvarchar(max)  NOT NULL,
+    [idPrueba] int  NOT NULL,
     [fecha] nvarchar(max)  NOT NULL,
-    [posicion] bigint  NOT NULL,
+    [posicion] int  NOT NULL,
     [Deportista_dorsal] int  NOT NULL,
     [Prueba_Id] int  NOT NULL
 );
@@ -99,18 +119,19 @@ GO
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
 
--- Creating foreign key on [Pais_ISO] in table 'Deportistas'
+-- Creating foreign key on [ISO] in table 'Deportistas'
 ALTER TABLE [dbo].[Deportistas]
 ADD CONSTRAINT [FK_PaisDeportista]
-    FOREIGN KEY ([Pais_ISO])
+    FOREIGN KEY ([ISO])
     REFERENCES [dbo].[Pais]
         ([ISO])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_PaisDeportista'
 CREATE INDEX [IX_FK_PaisDeportista]
 ON [dbo].[Deportistas]
-    ([Pais_ISO]);
+    ([ISO]);
 GO
 
 -- Creating foreign key on [Deportista_dorsal] in table 'Calificaciones'
@@ -120,6 +141,7 @@ ADD CONSTRAINT [FK_DeportistaCalificaciones]
     REFERENCES [dbo].[Deportistas]
         ([dorsal])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_DeportistaCalificaciones'
 CREATE INDEX [IX_FK_DeportistaCalificaciones]
@@ -134,6 +156,7 @@ ADD CONSTRAINT [FK_PruebaCalificaciones]
     REFERENCES [dbo].[Pruebas]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_PruebaCalificaciones'
 CREATE INDEX [IX_FK_PruebaCalificaciones]

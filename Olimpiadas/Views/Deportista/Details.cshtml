@@ -1,0 +1,71 @@
+﻿@model Olimpiadas.Models.Deportista
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Deportista</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.dorsal)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.dorsal)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.nombre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nombre)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.edad)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.edad)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.calificacion)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.calificacion)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.email)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.email)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.descripcion)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.descripcion)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fechaNacimiento)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fechaNacimiento)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ISO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ISO)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
