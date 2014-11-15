@@ -57,7 +57,7 @@ namespace Olimpiadas.Models
 
         Pais IOlimpiadas.damePais(string ISO)
         {
-            return db.Paises.Find(ISO);
+            return db.Pais.Find(ISO);
         }
 
         List<Deportista> IOlimpiadas.dameDeporsitasDeUnPaisMenoresDeUnaEdad(string ISO, int edad)

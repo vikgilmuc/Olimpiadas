@@ -1,0 +1,62 @@
+﻿@model Olimpiadas.Models.Calificaciones
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Calificaciones</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.dorsal)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.dorsal)
+            @Html.ValidationMessageFor(model => model.dorsal)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.idPrueba)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.idPrueba)
+            @Html.ValidationMessageFor(model => model.idPrueba)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.fecha)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.fecha)
+            @Html.ValidationMessageFor(model => model.fecha)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.posicion)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.posicion)
+            @Html.ValidationMessageFor(model => model.posicion)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

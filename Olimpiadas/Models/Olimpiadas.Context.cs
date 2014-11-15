@@ -25,7 +25,7 @@ namespace Olimpiadas.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<Pais> Paises { get; set; }
+        public DbSet<Pais> Pais { get; set; }
         public DbSet<Deportista> Deportistas { get; set; }
         public DbSet<Prueba> Pruebas { get; set; }
         public DbSet<Calificaciones> Calificaciones { get; set; }

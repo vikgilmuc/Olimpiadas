@@ -40,7 +40,7 @@ namespace Olimpiadas.Models
 
 
 
-        Paises.ForEach(s => context.Paises.Add(s));
+        Paises.ForEach(s => context.Pais.Add(s));
         
 
         Deportistas.ForEach(s => context.Deportistas.Add(s));
