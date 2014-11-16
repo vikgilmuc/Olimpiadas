@@ -126,6 +126,7 @@
   <ItemGroup>
     <Compile Include="Controllers\CalificacionesController.cs" />
     <Compile Include="Controllers\DeportistaController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PaisController.cs" />
     <Compile Include="Controllers\PruebaController.cs" />
     <Compile Include="Global.asax.cs">
@@ -273,6 +274,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Calificaciones\Delete.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
